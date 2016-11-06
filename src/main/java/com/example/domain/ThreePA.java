@@ -9,7 +9,7 @@ import javax.persistence.Id;
  * Created by palsulea on 11/5/2016.
  */
 @Entity
-public class ThreePa {
+public class ThreePA {
     @Id
     @GeneratedValue
     private Long id;
