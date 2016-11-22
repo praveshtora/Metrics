@@ -16,9 +16,15 @@ public class DDX {
     @Column
     private int headCount;
     @Column
-    private int portofolios;
-    @Column
-    private int scoreCard;
+    private int productivity;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public int getHeadCount() {
         return headCount;
@@ -28,19 +34,11 @@ public class DDX {
         this.headCount = headCount;
     }
 
-    public int getPortofolios() {
-        return portofolios;
+    public int getProductivity() {
+        return productivity;
     }
 
-    public void setPortofolios(int portofolios) {
-        this.portofolios = portofolios;
-    }
-
-    public int getScoreCard() {
-        return scoreCard;
-    }
-
-    public void setScoreCard(int scoreCard) {
-        this.scoreCard = scoreCard;
+    public void setProductivity(int productivity) {
+        this.productivity = productivity;
     }
 }

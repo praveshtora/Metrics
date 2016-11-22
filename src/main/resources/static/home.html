@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Services Dashboard</title>
+	<meta charset="UTF-8" />
+    <script type="application/javascript" src="jquery-3.1.0.min.js"></script>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="global.css" />
+    <script src="d3.v3.min.js" charset="utf-8"></script>
+<script src="c3.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+    
+    <header class="clearfix headerStyles">
+        <h1>Services Dashboard</h1>
+        <div class="loginInfo">
+            <div class="floatLeft"><img src="raviDP.jpg" alt="Display Picture" /></div>
+            <div class="floatLeft">
+                <p>Ravi Motwani</p>
+                <p>Director</p>
+            </div>
+            <span class="floatLeft"><img src="downArrow.png" alt="Down Arrow" /></span>
+        </div>
+    </header>
+    
+    <nav class="mainNav">
+        <div class="navBlock">
+            <div>
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+            </div>
+        </div>
+        
+        <div  onmouseover="showDigitalNavigation()" onmouseout="hideDigtalNavigation()" class="navBlock">
+            <div>
+                <i class="fa fa-globe"></i>
+                <span id="digitalBlock">Digital</span>
+            </div>
+        </div>
+        
+        <div id="dataServiceblock" onmouseover="showDataNav()" onmouseout="hideDataNav()" class="navBlock">
+            <div>
+                <i class="fa fa-database"></i>
+                <span>Data Services</span>
+            </div>
+        </div>
+    </nav>
+    
+    <nav id="digitalNav" onmouseover="showDigitalNavigation()" onmouseout="hideDigtalNavigation()" class="subNav digitalNav">
+        <ul class="subNavList">
+            <li class="subNavTitle">SEO Services</li>
+            <li>Onboarding</li>
+            <li>Ad Ops</li>
+            <li>Dev Ops</li>
+            <li>Off-page Cases</li>
+            <li>Presales Audit</li>
+            <li>Content Spinning</li>
+        </ul>
+        
+        <ul class="subNavList">
+            <li class="subNavTitle">Advocate Services</li>
+            <li>Website Quality Checks</li>
+            <li>Quality Business Review</li>
+        </ul>
+        
+        <ul class="subNavList">
+            <li class="subNavTitle">Digital Advertising</li>
+        </ul>
+    </nav>
+    
+    <nav id="dataNav" onmouseover="showDataNav()" onmouseout="hideDataNav()" class="subNav dataNav">
+        <ul class="subNavList">
+            <li class="subNavTitle">IA</li>
+        </ul>
+        
+        <ul class="subNavList">
+            <li class="subNavTitle">ICAP</li>
+        </ul>
+        
+        <ul class="subNavList">
+            <li class="subNavTitle">3PA</li>
+        </ul>
+        
+        <ul class="subNavList">
+            <li class="subNavTitle">DDX</li>
+        </ul>
+    </nav>
+    
+    <section>
+        <div class="leaderBoard">
+           <h1 id="heading">Leaderboard</h1>
+            <div class="filterSection">
+                <span>Select Group</span>
+                <select onchange="getDatafor(this.value)">
+                    <option value="all" selected="selected">All</option>
+                    <option value ="digital">Digital</option>
+                    <option value="dataService" >Data Services</option>
+                </select>
+                
+                <span class="spaceLeft20">Report Period</span>
+                <select>
+                    <option>October</option>
+                    <!--<option>This Month</option>-->
+                    <!--<option>Last Month</option>-->
+                    <!--<option>This Year</option>-->
+                </select>
+            </div>
+            <div class="allCards clearfix">
+                <div  class="card floatLeft">
+                    <h4>Headcount<i class="fa fa-info" title="Total Count of Person"></i><!--<i class="fa fa-cog"></i>--></h4>
+                    <h3 id="headCountVal"></h3>
+                    <div id="headCount" class="graph"></div>
+                </div>
+                
+                <div class="card floatLeft customMargin">
+                    <h4>Retention Score<i class="fa fa-info"></i><!--<i class="fa fa-arrows-alt"></i><i class="fa fa-cog"></i>--></h4>
+                    <h3 id="retentionVal"></h3>
+                    <div id="attrition"class="graph"></div>
+                </div>
+                
+                <div class="card floatLeft">
+                    <h4>Productivity<i class="fa fa-info"></i><!--<i class="fa fa-arrows-alt"></i><i class="fa fa-cog"></i>--></h4>
+                    <h3 id="productivityVal"></h3>
+                    <div id="productivity"class="graph"></div>
+                </div>
+                
+               <div id="scoreCardDigital"class="card floatLeft">
+                    <h4>Scorecard - Digital<!--<i class="fa fa-arrows-alt"></i><i class="fa fa-cog">--></i></h4>
+                    <h3></h3>
+                    <div class="graph"></div>
+                </div>
+
+                <div id="scoreCardDS" class="card floatLeft customMargin">
+                    <h4>Scorecard - DS<!--<i class="fa fa-arrows-alt"></i><i class="fa fa-cog"></i>--></h4>
+                    <h3></h3>
+                    <div id="scoreCard"class="graph"></div>
+                </div>
+
+                <div id="RandR" class="card floatLeft cradRR">
+                    <h4>Rewards & Recognitions</h4>
+                </div>
+            </div>
+
+
+            <div  id="imageOfData1"class="graphPic">
+                <h4>US/INDIA % OF ICAP TROUBLESHOOTING(Running 7 Day Average)</h4>
+                <img src="1.jpeg" alt="Graph" />
+            </div>
+
+            <div id="imageOfData2"class="graphPic">
+                <h4>Pune Team Total ICAP Counts Score Vs Actual 7 Day Average </h4>
+                <img src="2.jpeg" alt="Graph" />
+            </div>
+
+            <div id="imageOfData3" class="graphPic">
+                <h4>Pune Team Total ICAP Compositeƒ Score Vs Actual 7 Day Average</h4>
+                <img src="3.jpeg" alt="Graph" />
+            </div>
+
+        </div>
+    </section>
+    
+</body>
+</html>

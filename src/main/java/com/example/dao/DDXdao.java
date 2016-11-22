@@ -6,5 +6,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 /**
  * Created by palsulea on 11/5/2016.
  */
-public interface DDXdao extends PagingAndSortingRepository<DDX,Long> {
+public interface DdxDAO extends PagingAndSortingRepository<DDX,Long> {
 }

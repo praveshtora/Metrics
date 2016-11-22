@@ -11,59 +11,43 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by torap on 05/11/16.
- */
+
 public class ExcelSheetUtility {
 
-    private int maxColoumn=5;
+    private int maxColoumn = 5;
 
-    public List<List<String>> readExcelFilebySheet(String fileName, int sheetNum)
-{
-    List<List<String>> excelData=new ArrayList<>();
-    try
-    {
+    public static List<List<String>> readExcelFilebySheet(String fileName, int sheetNum) {
+        List<List<String>> excelData = new ArrayList<List<String>>();
+        try {
 
-        FileInputStream file = new FileInputStream(new File(fileName));
-
-        //Create Workbook instance holding reference to .xlsx file
-        XSSFWorkbook workbook = new XSSFWorkbook(file);
-
-        //Get first/desired sheet from the workbook
+            FileInputStream file = new FileInputStream(new File(fileName));
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(sheetNum);
-
-            //Iterate through each rows one by one
             Iterator<Row> rowIterator = sheet.iterator();
-            int rownum=0,columnnum;
+            int rownum = 0, columnnum;
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
-                columnnum=0;
-                //For each row, iterate through all the columns
+                columnnum = 0;
                 Iterator<Cell> cellIterator = row.cellIterator();
-                List<String> rowData = new ArrayList<>();
+                List<String> rowData = new ArrayList<String>();
                 while (cellIterator.hasNext()) {
                     Cell cell = cellIterator.next();
-                    switch (cell.getCellType()){
-                        case  Cell.CELL_TYPE_STRING:
+                    switch (cell.getCellType()) {
+                        case Cell.CELL_TYPE_STRING:
                             rowData.add(cell.getStringCellValue());
                             break;
-                        case  Cell.CELL_TYPE_NUMERIC:
-                            rowData.add(cell.getNumericCellValue()+"");
+                        case Cell.CELL_TYPE_NUMERIC:
+                            rowData.add(cell.getNumericCellValue() + "");
                     }
-
-                    columnnum+=1;
-
+                    columnnum += 1;
                 }
                 excelData.add(rowData);
-                rownum+=1;
-                System.out.println("");
+                rownum += 1;
             }
-        file.close();
+            file.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return excelData;
     }
-    catch (Exception e)
-    {
-        e.printStackTrace();
-    }
-return excelData;
-}
 }
