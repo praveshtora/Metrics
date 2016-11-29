@@ -42,7 +42,19 @@ function getDatafor(team) {
 }
 function setVisibiltyforDigital() {
     document.getElementById("heading").innerHTML="Digital";
+    document.getElementById("scoreCardDigital").style.display="none";
+    document.getElementById("scoreCardDS").style.display="none";
+    document.getElementById("RandR").style.display="none";
 
+    document.getElementById("imageOfData3").style.display="block";
+    document.getElementById("imageOfData2").style.display="block";
+    document.getElementById("imageOfData1").style.display="block"
+    document.getElementById("imageOfData1").innerHTML="";
+    document.getElementById("imageOfData2").innerHTML="";
+    document.getElementById("imageOfData3").innerHTML="";
+    document.getElementById("imageOfData1").style.height="275px";
+    document.getElementById("imageOfData2").style.height="275px";
+    document.getElementById("imageOfData3").style.height="275px";
 }
 function setVisibiltyforall() {
     document.getElementById("heading").innerHTML="LeaderBoard";
@@ -61,9 +73,26 @@ function setVisibilityforDS() {
     document.getElementById("RandR").style.display="none";
     document.getElementById("imageOfData3").style.display="block";
     document.getElementById("imageOfData2").style.display="block";
-    document.getElementById("imageOfData1").style.display="block"
+    document.getElementById("imageOfData1").style.display="block";
+    document.getElementById("imageOfData1").appendChild(image("1.jpeg"));
+    document.getElementById("imageOfData2").appendChild(image("2.jpeg"));
+    document.getElementById("imageOfData3").appendChild(image("3.jpeg"));
+
+}
+function image(thisImg) {
+    var img = document.createElement("IMG");
+    img.src = thisImg;
+    return img;
 }
 function getDataforAll(){
+    document.getElementById("headCountVal").innerHTML=null;
+    document.getElementById("headCount").innerHTML=null;
+    document.getElementById("retentionVal").innerHTML=null;
+    document.getElementById("attrition").innerHTML=null;
+    document.getElementById("productivityVal").innerHTML=null;
+    document.getElementById("productivity").innerHTML=null;
+}
+function getDataforDigital() {
     document.getElementById("headCountVal").innerHTML=null;
     document.getElementById("headCount").innerHTML=null;
     document.getElementById("retentionVal").innerHTML=null;
